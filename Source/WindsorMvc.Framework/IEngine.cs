@@ -21,5 +21,11 @@ namespace WindsorMvc.Framework
         T Resolve<T>() where T : class;
         T Resolve<T>(System.Collections.IDictionary arguments);
         object Resolve(Type serviceType);
+
+        /// <summary>
+        /// Release component instance
+        /// </summary>
+        /// <param name="service"></param>
+        void Release(object instance);
     }
 }

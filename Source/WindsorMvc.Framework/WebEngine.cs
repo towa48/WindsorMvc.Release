@@ -28,6 +28,8 @@ namespace WindsorMvc.Framework
         public WebEngine()
         {
             this._container = new WindsorContainer();
+            //this._container.Kernel.ReleasePolicy = new Castle.MicroKernel.Releasers.NoTrackingReleasePolicy();
+
             // Register IEngine
             this._container.Register(Component.For(typeof(IEngine)).Instance(this));
             // Register IWindsorContainer
@@ -111,6 +113,11 @@ namespace WindsorMvc.Framework
         public object Resolve(Type serviceType)
         {
             return this._container.Resolve(serviceType);
+        }
+
+        public void Release(object instance)
+        {
+            this._container.Release(instance);
         }
     }
 }

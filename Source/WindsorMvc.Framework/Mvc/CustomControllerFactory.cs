@@ -53,6 +53,16 @@ namespace WindsorMvc.Framework.Mvc
             return controller;
         }
 
+        /// <summary>
+        /// Method releases controller
+        /// </summary>
+        /// <param name="controller">Controller instance</param>
+        public override void ReleaseController(IController controller)
+        {
+            this._engine.Release(controller);
+            base.ReleaseController(controller);
+        }
+
         public IControllerFactory ControllerFactory
         {
             get { return this; }
