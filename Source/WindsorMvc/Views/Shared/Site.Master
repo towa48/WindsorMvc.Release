@@ -21,6 +21,7 @@
                 <%= Html.MainMenu()
                 .SetSource(mr.All)
                 .RenderControl() %>
+                <% Html.GetEngine().Release(mr); %>
             </div>
         </div>
         <div style="clear:both"></div><!-- fix -->

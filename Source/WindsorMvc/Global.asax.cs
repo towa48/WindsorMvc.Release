@@ -28,7 +28,7 @@ namespace WindsorMvc.Web
             engine.RegisterControllers(Assembly.GetExecutingAssembly());
 
             var app = new WebApplication();
-            app.RegisterGlobalFilters(GlobalFilters.Filters);
+            app.RegisterGlobalFilters(GlobalFilters.Filters, engine);
             app.RegisterRoutes(RouteTable.Routes);
             app.RegisterComponents(engine);
 

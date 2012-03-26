@@ -16,6 +16,7 @@ namespace WindsorMvc.Web
     using Castle.MicroKernel;
     using WindsorMvc.Web.DataAccess;
     using WindsorMvc.Web.Repositories;
+    using WindsorMvc.Web.Attributes;
 
     /// <summary>
     /// TODO: Update summary.
@@ -26,9 +27,10 @@ namespace WindsorMvc.Web
         /// TODO: Update summary.
         /// </summary>
         /// <param name="filters"></param>
-        public void RegisterGlobalFilters(GlobalFilterCollection filters)
+        public void RegisterGlobalFilters(GlobalFilterCollection filters, IEngine engine)
         {
             filters.Add(new HandleErrorAttribute());
+            filters.Add(new UpdateActivityAttribute(engine));
         }
 
         /// <summary>
@@ -58,6 +60,7 @@ namespace WindsorMvc.Web
             // Register Singleton Components
             kernel.Register(Castle.MicroKernel.Registration.Component.For<IDataContextProvider>().ImplementedBy<DataContextProvider>().LifeStyle.PerWebRequest);
             kernel.Register(Castle.MicroKernel.Registration.Component.For<IMenuRepository>().ImplementedBy<MenuRepository>().LifeStyle.Transient);
+            kernel.Register(Castle.MicroKernel.Registration.Component.For<IUserRepository>().ImplementedBy<UserRepository>().LifeStyle.Transient);
         }
     }
 }
