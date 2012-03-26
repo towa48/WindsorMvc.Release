@@ -1,4 +1,5 @@
 ﻿<%@ Master Language="C#" Inherits="System.Web.Mvc.ViewMasterPage" %>
+<%@ Import Namespace="WindsorMvc.Framework.Extensions" %>
 
 <!DOCTYPE html>
 <html>
@@ -14,12 +15,12 @@
                 <h1>My MVC Application</h1>
             </div>
             <div id="logindisplay">
-            </div> 
+            </div>
             <div id="menucontainer">
-                <ul id="menu">
-                    <li><%: Html.ActionLink("Home", "Index", "Home")%></li>
-                    <li><%: Html.ActionLink("About", "About", "Home")%></li>
-                </ul>
+                <% var mr = Html.GetEngine().Resolve<WindsorMvc.Web.Repositories.IMenuRepository>(); %>
+                <%= Html.MainMenu()
+                .SetSource(mr.All)
+                .RenderControl() %>
             </div>
         </div>
         <div style="clear:both"></div><!-- fix -->

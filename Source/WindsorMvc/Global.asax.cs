@@ -1,5 +1,5 @@
 ﻿// -----------------------------------------------------------------------
-// <copyright file="ParamUtility.cs" company="Microsoft">
+// <copyright file="Global.asax.cs" company="Microsoft">
 // TODO: Update copyright text.
 // </copyright>
 // -----------------------------------------------------------------------
@@ -30,6 +30,7 @@ namespace WindsorMvc.Web
             var app = new WebApplication();
             app.RegisterGlobalFilters(GlobalFilters.Filters);
             app.RegisterRoutes(RouteTable.Routes);
+            app.RegisterComponents(engine);
 
             // Register custom controller factory
             ControllerBuilder.Current.SetControllerFactory(engine.Resolve<IControllerFactory>());

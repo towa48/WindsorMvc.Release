@@ -48,6 +48,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Components\CustomMenu\CustomMenu.cs" />
+    <Compile Include="Components\CustomMenu\CustomMenuBuilder.cs" />
+    <Compile Include="Components\CustomMenu\Html\CustomMenuRenderer.cs" />
+    <Compile Include="Components\CustomMenu\Items\MenuItem.cs" />
+    <Compile Include="Components\IBuilder.cs" />
+    <Compile Include="Extensions\HtmlHelperExtensions.cs" />
     <Compile Include="IEngine.cs" />
     <Compile Include="Mvc\CustomControllerFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

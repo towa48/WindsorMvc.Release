@@ -14,6 +14,8 @@ namespace WindsorMvc.Web
     using System.Web.Routing;
     using WindsorMvc.Framework;
     using Castle.MicroKernel;
+    using WindsorMvc.Web.DataAccess;
+    using WindsorMvc.Web.Repositories;
 
     /// <summary>
     /// TODO: Update summary.
@@ -45,5 +47,17 @@ namespace WindsorMvc.Web
             );
         }
 
+        /// <summary>
+        /// Register main application components
+        /// </summary>
+        /// <param name="engine"></param>
+        public void RegisterComponents(IEngine engine)
+        {
+            var kernel = engine.Resolve<IKernel>();
+
+            // Register Singleton Components
+            kernel.Register(Castle.MicroKernel.Registration.Component.For<IDataContextProvider>().ImplementedBy<DataContextProvider>().LifeStyle.PerWebRequest);
+            kernel.Register(Castle.MicroKernel.Registration.Component.For<IMenuRepository>().ImplementedBy<MenuRepository>().LifeStyle.Transient);
+        }
     }
 }
